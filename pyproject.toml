@@ -6,12 +6,12 @@ authors = ["Danilo Horta <danilo.horta@pm.me>"]
 license = "MIT"
 readme = "README.md"
 packages = [{ include = "hmmer" }]
+exclude = [{ path = "hmmer/data/bin/*", format = "sdist" }]
 include = [
   { path = "hmmer/data/bin/*", format = "wheel" },
   { path = "build_hmmer.py", format = "sdist" },
   { path = "build_hmmer.sh", format = "sdist" },
 ]
-exclude = [{ path = "hmmer/data/bin/*", format = "sdist" }]
 
 [tool.poetry.dependencies]
 python = "^3.9"
