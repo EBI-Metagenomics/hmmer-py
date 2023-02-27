@@ -4,20 +4,21 @@ on: push
 
 env:
   CIBW_PROJECT_REQUIRES_PYTHON: ">=3.9"
+  CIBW_ARCHS_LINUX: "auto aarch64"
 
 jobs:
   make_sdist:
     name: Make SDist
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Build SDist
-      run: pipx run build --sdist
+      - name: Build SDist
+        run: pipx run build --sdist
 
-    - uses: actions/upload-artifact@v3
-      with:
-        path: dist/*.tar.gz
+      - uses: actions/upload-artifact@v3
+        with:
+          path: dist/*.tar.gz
 
   make_wheels:
     name: Make wheels on ${{ matrix.os }}
