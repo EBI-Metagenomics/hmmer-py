@@ -49,3 +49,6 @@ phmmer = 'hmmer:phmmer'
 
 [tool.cibuildwheel]
 skip = ["*i686"]
+
+[tool.cibuildwheel.linux]
+archs = ["auto", "aarch64"]

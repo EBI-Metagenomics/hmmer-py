@@ -4,7 +4,6 @@ on: push
 
 env:
   CIBW_PROJECT_REQUIRES_PYTHON: ">=3.9"
-  CIBW_ARCHS_LINUX: "auto aarch64"
 
 jobs:
   make_sdist:
@@ -32,6 +31,12 @@ jobs:
 
       - name: Build wheels
         run: pipx run cibuildwheel==2.12.0
+
+      - name: Set up QEMU
+        if: runner.os == 'Linux'
+        uses: docker/setup-qemu-action@v2
+        with:
+          platforms: arm64,arm
 
       - uses: actions/upload-artifact@v3
         with:
