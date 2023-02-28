@@ -23,13 +23,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Build wheels
-        run: pipx run cibuildwheel==2.12.0
-
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
         with:
           platforms: all
+
+      - name: Build wheels
+        run: pipx run cibuildwheel==2.12.0
 
       - uses: actions/upload-artifact@v3
         with:
